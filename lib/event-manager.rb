@@ -64,13 +64,13 @@ days = {0 => "Sunday",
   6 => "Saturday"}
 
 
-template_letter = File.read("form_letter.erb")
+template_letter = File.read("../form_letter.erb")
 erb_template = ERB.new template_letter
 
 hour_array = Array.new
 day_array = Array.new
 
-contents = CSV.open('event_attendees.csv', headers: true, header_converters: :symbol)
+contents = CSV.open('../event_attendees.csv', headers: true, header_converters: :symbol)
 contents.each do |row|
   id = row[0]
   name = row[:first_name]
@@ -94,7 +94,7 @@ end
 
 printf("The most active hour is %d \n", return_max_in_hash(hour_array))
 most_active_wday = return_max_in_hash(day_array)
-printf("The most active day of the week is  %s",days[most_active_wday])
+printf("The most active day of the week is %s",days[most_active_wday])
 
 
 
